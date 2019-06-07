@@ -3,6 +3,7 @@ import $ from 'jquery';
 import './styles.css';
 
 $(document).ready(function() {
+  $('.showDoctorsConditionQuery').empty();
   $('#byConditionQueryShow').click(function() {
     let input = $('#condition').val();
     $('#condition').val("");
@@ -26,6 +27,7 @@ $(document).ready(function() {
   });
 
   $('#byNameShow').click(function() {
+    $('.showDoctorsName').empty();
     let input = $('#nameSearch').val();
     $('#nameSearch').val("");
     let doctorQuery = new DoctorQuery();
@@ -46,5 +48,30 @@ $(document).ready(function() {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
     });
   });
+
+  $('#byCity').click(function() {
+    $('.showDoctorsName').empty();
+    let input = $('#allDoc').val();
+    $('#allDoc').val("");
+    console.log(input);
+    let doctorQuery = new DoctorQuery();
+    let promise = doctorQuery.byCity(input);
+    promise.then(function(response) {
+      let body = JSON.parse(response);
+      console.log(body);
+
+      if ((body.data).length > 0){
+        $('#headByCity').html(`<h4>Here are some doctors in "${input}"</h4>`);
+        (body.data).forEach(doctor => {
+          $('.showDoctorsName').append(`<li>${doctor.profile.first_name} ${doctor.profile.last_name}</li>`);
+        })
+      } else {
+        $('#headByName').html(`<h4>Sorry, there are no doctors in "${input}"</h4>`);
+      }
+    }, function(error) {
+      $('.showErrors').text(`There was an error processing your request: ${error.message}`);
+    });
+  });
+
 
 });

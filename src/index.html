@@ -6,23 +6,30 @@
   <div class="parallax">
     <h2 id="title">DOCTOR SEARCH</h2>
   </div>
-    <div class="container">
-      <h1>Find a doctor here!</h1>
-
-      <label for="condition">What do you need help with?</label>
-      <input id="condition" type="text">
-      <button class="btn-success" id="byConditionQueryShow">Submit</button>
-      <div id="headConditionQuery"></div>
-      <div class="showDoctorsConditionQuery"></div>
-      <div class="showErrors"></div>
-<br>
-      <label for="nameSearch">What is the name of the doctor you are looking for?</label>
-      <input id="nameSearch" type="text">
-      <button class="btn-success" id="byNameShow">Submit</button>
-      <div id="headByName"></div>
-      <div class="showDoctorsName"></div>
-      <div class="showErrors"></div>
-    </div>
+  <div class="container">
+    <h1>Find a doctor here!</h1>
+    <label for="nameSearch">What is the name of the doctor you are looking for?</label>
+    <input id="nameSearch" type="text">
+    <button class="btn-success" id="byNameShow">Submit</button>
+    <div id="headByName"></div>
+    <div class="showDoctorsName"></div>
+    <div class="showErrors"></div>
+    <br>
+    <label for="condition">What do you need help with?</label>
+    <input id="condition" type="text">
+    <button class="btn-success" id="byConditionQueryShow">Submit</button>
+    <div id="headConditionQuery"></div>
+    <div class="showDoctorsConditionQuery"></div>
+    <div class="showErrors"></div>
+    <br>
+    <h4>Or, search for a doctor by city:</h4>
+    <label for="allDoc">Enter city name and state abbreviation (ie "Portland or")</label>
+    <input id="allDoc" type="text">
+    <button class="btn-success" id="byCity">Submit</button>
+    <div id="headByCity"></div>
+    <div class="byCityShow"></div>
+    <div class="showErrors"></div>
+  </div>
 
 </body>
 </html>
