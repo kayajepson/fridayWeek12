@@ -33,4 +33,21 @@ $(document).ready(function() {
     });
   });
 
+  $('#byNameShow').click(function() {
+    let input = $('#nameSearch').val();
+    $('#nameSearch').val("");
+    let doctorQuery = new DoctorQuery();
+    let promise = doctorQuery.byName(input);
+    promise.then(function(response) {
+      let body = JSON.parse(response);
+      console.log(body);
+      $('#headByName').html(`<h4>Here are some doctors with a name similar to "${input}"</h4>`);
+        (body.data).forEach(doctor => {
+          $('.showDoctorsName').append(`<li>${doctor.profile.first_name} ${doctor.profile.last_name}</li>`);
+        })
+    }, function(error) {
+      $('.showErrors').text(`There was an error processing your request: ${error.message}`);
+    });
+  });
+
 });
