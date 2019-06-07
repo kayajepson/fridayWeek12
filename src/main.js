@@ -19,7 +19,7 @@ $(document).ready(function() {
           $('.showDoctorsConditionQuery').append(`<li>${data[i].profile.first_name} ${data[i].profile.last_name}<ul><li>${data[i].practices[0].visit_address.street} ${data[i].practices[0].visit_address.city} ${data[i].practices[0].visit_address.state}</li> <li>${data[i].practices[0].phones[0].number}</li> <li>Accepts New Patients? ${data[i].practices[0].accepts_new_patients}</li></li>`);
         }
       } else {
-          $('#headConditionQuery').html(`<h4>Sorry, there are no doctors that can help with ${input}</h4>`);
+        $('#headConditionQuery').html(`<h4>Sorry, there are no doctors that can help with ${input}</h4>`);
       }
 
     }, function(error) {
@@ -28,9 +28,9 @@ $(document).ready(function() {
   });
 
   $('#toggleCondition').on('click', function() {
-     $('.showDoctorsConditionQuery').toggle();
-     $('#headConditionQuery').toggle();
-   });
+    $('.showDoctorsConditionQuery').toggle();
+    $('#headConditionQuery').toggle();
+  });
 
   $('#byNameShow').click(function() {
     $('#toggleDoctors').show();
@@ -56,8 +56,8 @@ $(document).ready(function() {
   });
 
   $('#toggleDoctors').on('click', function() {
-     $('.showDoctorsName').toggle();
-   });
+    $('.showDoctorsName').toggle();
+  });
 
   $('#byCity').click(function() {
     $('.showDoctorsName').empty();
@@ -73,7 +73,7 @@ $(document).ready(function() {
       if ((body.data).length > 0){
         $('#headByCity').html(`<h4>Here are some doctors in "${input}"</h4>`);
         (body.data).forEach(doctor => {
-          $('.showDoctorsName').append(`<li>${doctor.profile.first_name} ${doctor.profile.last_name}</li>`);
+          $('.byCityShow').append(`<li>${doctor.profile.first_name} ${doctor.profile.last_name}</li>`);
         })
       } else {
         $('#headByName').html(`<h4>Sorry, there are no doctors in "${input}"</h4>`);
@@ -82,6 +82,30 @@ $(document).ready(function() {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
     });
   });
+
+  $('#bySpecialty').click(function() {
+    $('.showDoctorsName').empty();
+    let input = $('#allDoc').val();
+    $('#allDoc').val("");
+    console.log(input);
+    let doctorQuery = new DoctorQuery();
+    let promise = doctorQuery.allSpecialties();
+    promise.then(function(response) {
+      let body = JSON.parse(response);
+      let data = body.data;
+      console.log(data);
+      console.log(data);
+      let dropdown = $('#specialty-dropdown');
+      dropdown.empty();
+      dropdown.append('<option selected="true" disabled>Choose a Specialty</option>');
+      dropdown.prop('selectedIndex', 0);
+      for (let i=0; i < data.length; i++){
+        dropdown.append($('<option></option>').attr('value', data.name).text(data.name))
+      }
+    })
+  });
+
+
 
 
 });
