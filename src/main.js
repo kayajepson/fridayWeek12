@@ -7,10 +7,12 @@ $(document).ready(function() {
     let promise = doctorQuery.getDoctors();  // call the instance method
 
     promise.then(function(response) {
-      body = JSON.parse(response);
-      $('.showDoctors').text(`The doctors that match your search are ${body.main.doctors}%`);
+      let body = JSON.parse(response);
+        (body.data).forEach(doctor => {
+          $('.showDoctors').append(`<li>${doctor.profile.first_name} ${doctor.profile.last_name}</li>`);
+        })
 
-      $('.showDoctors').append(`<li>${body.main.doctors}</li>`);
+
     }, function(error) {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
     });

@@ -14,7 +14,4 @@ export class DoctorQuery {
        request.send();
      });
    }
-
-
-
 }
