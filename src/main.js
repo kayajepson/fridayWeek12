@@ -25,9 +25,13 @@ $(document).ready(function() {
       let body = JSON.parse(response);
       console.log(body);
       $('#headAilment').html(`<h4>Here are some doctors that specialize in ${input}</h4>`);
-        (body.data).forEach(doctor => {
-          $('.showDoctorsAilment').append(`<li>${doctor.profile.first_name} ${doctor.profile.last_name}</li>`);
-        })
+      let data = body.data;
+      for (let i=0; i < data.length; i++){
+        $('.showDoctorsAilment').append(`<li>${data[i].profile.first_name} ${data[i].profile.last_name}<ul><li>${data[i].practices[-0].visit_address.city}</li></li>`);
+      }
+        // (body.data).forEach(doctor => {
+        //   $('.showDoctorsAilment').append(`<li>${doctor.profile.first_name} ${doctor.profile.last_name}</li>`);
+        // })
     }, function(error) {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
     });
