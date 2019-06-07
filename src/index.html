@@ -7,29 +7,61 @@
     <h2 id="title">DOCTOR SEARCH</h2>
   </div>
   <div class="container">
-    <h1>Find a doctor here!</h1>
-    <label for="nameSearch">What is the name of the doctor you are looking for?</label>
-    <input id="nameSearch" type="text">
-    <button class="btn-success" id="byNameShow">Submit</button>
-    <div id="headByName"></div>
-    <div class="showDoctorsName"></div>
-    <div class="showErrors"></div>
-    <br>
-    <label for="condition">What do you need help with?</label>
-    <input id="condition" type="text">
-    <button class="btn-success" id="byConditionQueryShow">Submit</button>
-    <div id="headConditionQuery"></div>
-    <div class="showDoctorsConditionQuery"></div>
-    <div class="showErrors"></div>
-    <br>
-    <h4>Or, search for a doctor by city:</h4>
-    <label for="allDoc">Enter city name and state abbreviation (ie "Portland or")</label>
-    <input id="allDoc" type="text">
-    <button class="btn-success" id="byCity">Submit</button>
-    <div id="headByCity"></div>
-    <div class="byCityShow"></div>
-    <div class="showErrors"></div>
+    <div class="row1">
+      <h1>Find a doctor here!</h1>
+      <label for="nameSearch">What is the name of the doctor you are looking for?</label>
+      <input id="nameSearch" type="text">
+      <button class="btn-success" id="byNameShow">Submit</button>
+      <div id="headByName"></div><br>
+      <button type="button" id="toggleDoctors" class="hidden">Show/Hide</button>
+      <div class="showDoctorsName"></div>
+      <div class="showErrors"></div>
+      <br>
+    </div>
+    <div class="row2">
+      <label for="condition">What do you need help with?</label>
+      <input id="condition" type="text">
+      <button class="btn-success" id="byConditionQueryShow">Submit</button>
+      <br>
+      <button type="button" id="toggleCondition" class="hidden">Show/Hide</button>
+      <div id="headConditionQuery"></div>
+      <div class="showDoctorsConditionQuery"></div>
+      <div class="showErrors"></div>
+      <br>
+    </div>
+    <div class="row3">
+      <h4>Search for a doctor by city:</h4>
+      <label for="allDoc">Enter city name and state abbreviation (ie "Portland or")</label>
+      <input id="allDoc" type="text">
+      <button class="btn-success" id="byCity">Submit</button>
+      <div id="headByCity"></div>
+      <div class="byCityShow"></div>
+      <div class="showErrors"></div>
+      <br>
+    </div>
+    <div class="row4">
+      <label for="allSpec">Enter city name and state abbreviation (ie "Portland or")</label>
+      <input id="allSpec" type="text">
+      <button class="btn-success" id="bySpecialty">Submit</button>
+      <div id="headBySpec"></div>
+      <div class="bySpecShow"></div>
+      <div class="showErrors"></div>
+    </div>
+
+    <div class="row5">
+      <h4>Find a doctor based on a specialty:</h4>
+      <div id="menu">
+        <ul>
+          <li><a href="#">Link One</a></li>
+          <ul class="dropdown-menu">
+            <li><a href="#">Dropdown Link</a></li>
+            <li><a href="#">Another Dropdown Link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </div>
+</div>
 
 </body>
 </html>

@@ -5,6 +5,7 @@ import './styles.css';
 $(document).ready(function() {
   $('.showDoctorsConditionQuery').empty();
   $('#byConditionQueryShow').click(function() {
+    $('#toggleCondition').show();
     let input = $('#condition').val();
     $('#condition').val("");
     let doctorQuery = new DoctorQuery();
@@ -26,7 +27,13 @@ $(document).ready(function() {
     });
   });
 
+  $('#toggleCondition').on('click', function() {
+     $('.showDoctorsConditionQuery').toggle();
+     $('#headConditionQuery').toggle();
+   });
+
   $('#byNameShow').click(function() {
+    $('#toggleDoctors').show();
     $('.showDoctorsName').empty();
     let input = $('#nameSearch').val();
     $('#nameSearch').val("");
@@ -34,13 +41,12 @@ $(document).ready(function() {
     let promise = doctorQuery.byName(input);
     promise.then(function(response) {
       let body = JSON.parse(response);
-      console.log(body);
-
-      if ((body.data).length > 0){
-        $('#headByName').html(`<h4>Here are some doctors with a name similar to "${input}"</h4>`);
-        (body.data).forEach(doctor => {
-          $('.showDoctorsName').append(`<li>${doctor.profile.first_name} ${doctor.profile.last_name}</li>`);
-        })
+      let data = body.data;
+      if ((data).length > 0){
+        $('.showDoctorsName').html(`<h4>Here are some doctors with a name similar to "${input}"</h4>`);
+        for (let i=0; i < data.length; i++){
+          $('.showDoctorsName').append(`<li>${data[i].profile.first_name} ${data[i].profile.last_name}<ul><li>${data[i].practices[0].visit_address.street} ${data[i].practices[0].visit_address.city} ${data[i].practices[0].visit_address.state}</li> <li>${data[i].practices[0].phones[0].number}</li> <li>Accepts New Patients? ${data[i].practices[0].accepts_new_patients}</li></li>`);
+        }
       } else {
         $('#headByName').html(`<h4>Sorry, there are no doctors with a name similar to "${input}"</h4>`);
       }
@@ -48,6 +54,10 @@ $(document).ready(function() {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
     });
   });
+
+  $('#toggleDoctors').on('click', function() {
+     $('.showDoctorsName').toggle();
+   });
 
   $('#byCity').click(function() {
     $('.showDoctorsName').empty();

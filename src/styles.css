@@ -11,12 +11,20 @@ body {
   margin-left: 25%;
 }
 
+.hidden {
+  display: none;
+}
+
 #title {
   float: right;
   margin-right: 25%;
   margin-top: 25%;
   font-size: 50px;
   color: #203435;
+}
+
+.row1, .row2, .row3, .row4, .row5 {
+  margin: auto;
 }
 
 .parallax {
