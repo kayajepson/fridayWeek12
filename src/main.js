@@ -27,7 +27,7 @@ $(document).ready(function() {
       $('#headAilment').html(`<h4>Here are some doctors that specialize in ${input}</h4>`);
       let data = body.data;
       for (let i=0; i < data.length; i++){
-        $('.showDoctorsAilment').append(`<li>${data[i].profile.first_name} ${data[i].profile.last_name}<ul><li>${data[i].practices[-0].visit_address.city}</li></li>`);
+        $('.showDoctorsAilment').append(`<li>${data[i].profile.first_name} ${data[i].profile.last_name}<ul><li>${data[i].practices[0].visit_address.street} ${data[i].practices[0].visit_address.city} ${data[i].practices[0].visit_address.state}</li> <li>${data[i].practices[0].phones[0].number}</li> <li>Accepts New Patients? ${data[i].practices[0].accepts_new_patients}</li></li>`);
       }
         // (body.data).forEach(doctor => {
         //   $('.showDoctorsAilment').append(`<li>${doctor.profile.first_name} ${doctor.profile.last_name}</li>`);
