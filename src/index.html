@@ -34,35 +34,21 @@
       <label for="allDoc">Enter city name and state abbreviation (ie "Portland or")</label>
       <input id="allDoc" type="text">
       <button class="btn-success" id="byCity">Submit</button>
+        <button type="button" id="toggleCity" class="hidden">Show/Hide</button>
       <div id="headByCity"></div>
       <div class="byCityShow"></div>
       <div class="showErrors"></div>
       <br>
     </div>
-    <!-- <div class="row4">
-      <label for="allSpec">Enter city name and state abbreviation (ie "Portland or")</label>
-      <input id="allSpec" type="text">
-      <button class="btn-success" id="byCity">Submit</button>
-      <div id="headBySpec"></div>
-      <div class="bySpecShow"></div>
-      <div class="showErrors"></div>
-    </div> -->
-
     <div class="row4">
       <h4>Find a doctor based on a specialty:</h4>
-      <button class="btn-success" id="bySpecialty">view</button>
-      <select id="specialty-dropdown" name="specialty">
-</select>
-      <div id="bySpecialty">
-        <ul>
-          <li><a href="#">Link One</a></li>
-          <ul class="dropdown-menu">
-            <li><a href="#">Dropdown Link</a></li>
-            <li><a href="#">Another Dropdown Link</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
+      <div id="bySpec" class="show">
+      <select class="show" id="specialty-dropdown" name="specialty"></select>
+      <button class="btn-success" id="bySpecialty">Select</button>
+      <div id="headSpecialtyQuery"></div>
+      <div class="showSpecialtyQuery"></div>
+      <div class="showErrors"></div>
+      </div>
   </div>
 </div>
 

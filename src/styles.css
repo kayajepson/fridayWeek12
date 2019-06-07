@@ -15,6 +15,10 @@ body {
   display: none;
 }
 
+.show {
+  display: block;
+}
+
 #title {
   float: right;
   margin-right: 25%;
