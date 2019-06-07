@@ -77,6 +77,7 @@ export class DoctorQuery {
           console.log("UI", userInput);
           let request = new XMLHttpRequest();
           let url = `https://api.betterdoctor.com/2016-03-01/doctors?specialty_uid=${userInput}&location=or-portland&skip=2&limit=100&user_key=${process.env.apiKey}`;
+          console.log("url", url);
           request.onload = function() {
             if (this.status === 200) {
               resolve(request.response);
