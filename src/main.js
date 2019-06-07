@@ -109,33 +109,33 @@ $(document).ready(function() {
     }
   });
 
-  $('#bySpecialty').click(function() {
-    $('.showDoctorsName').empty();
-    let input = $('#specialty-dropdown').val().toLowerCase();
-    $('#specialty-dropdown').val("");
-    let splitInput = input.replace(/\s/g, '%20');
-    console.log("input", input);
-    let doctorQuery = new DoctorQuery();
-    let promise = doctorQuery.bySpecialty(splitInput);
-    promise.then(function(response) {
-      let body = JSON.parse(response);
-      let data = body.data;
-      let actor =  data.actor;
-      console.log(actor);
-      //almost have this working.. i need to nest queries so i can look up the "actor" of the data body in order to get the "English-language singular noun describing a practitioner of this specialty" aka the actual term used in the url. 
-      console.log("data", data);
-      if ((data).length > 0){
-        $('#headSpecialtyQuery').html(`<h4>Here are some doctors that specialize in ${input}</h4>`);
-        for (let i=0; i < data.length; i++){
-          $('.showSpecialtyQuery').append(`<li>${data[i].profile.first_name} ${data[i].profile.last_name}<ul><li>${data[i].practices[0].visit_address.street} ${data[i].practices[0].visit_address.city} ${data[i].practices[0].visit_address.state}</li> <li>${data[i].practices[0].phones[0].number}</li> <li>Accepts New Patients? ${data[i].practices[0].accepts_new_patients}</li></li>`);
-        }
-      } else {
-        $('#headSpecialty').html(`<h4>Sorry, there are no doctors that specialize in ${input}</h4>`);
-      }
-    }, function(error) {
-      $('.showErrors').text(`There was an error processing your request: ${error.message}`);
-    });
-  });
+  // $('#bySpecialty').click(function() {
+  //   $('.showDoctorsName').empty();
+  //   let input = $('#specialty-dropdown').val().toLowerCase();
+  //   $('#specialty-dropdown').val("");
+  //   let splitInput = input.replace(/\s/g, '%20');
+  //   console.log("input", input);
+  //   let doctorQuery = new DoctorQuery();
+  //   let promise = doctorQuery.bySpecialty(splitInput);
+  //   promise.then(function(response) {
+  //     let body = JSON.parse(response);
+  //     let data = body.data;
+  //     let actor =  data.actor;
+  //     console.log(actor);
+  //     //almost have this working.. i need to nest queries so i can look up the "actor" of the data body in order to get the "English-language singular noun describing a practitioner of this specialty" aka the actual term used in the url.
+  //     console.log("data", data);
+  //     if ((data).length > 0){
+  //       $('#headSpecialtyQuery').html(`<h4>Here are some doctors that specialize in ${input}</h4>`);
+  //       for (let i=0; i < data.length; i++){
+  //         $('.showSpecialtyQuery').append(`<li>${data[i].profile.first_name} ${data[i].profile.last_name}<ul><li>${data[i].practices[0].visit_address.street} ${data[i].practices[0].visit_address.city} ${data[i].practices[0].visit_address.state}</li> <li>${data[i].practices[0].phones[0].number}</li> <li>Accepts New Patients? ${data[i].practices[0].accepts_new_patients}</li></li>`);
+  //       }
+  //     } else {
+  //       $('#headSpecialty').html(`<h4>Sorry, there are no doctors that specialize in ${input}</h4>`);
+  //     }
+  //   }, function(error) {
+  //     $('.showErrors').text(`There was an error processing your request: ${error.message}`);
+  //   });
+  // });
 
 
 
