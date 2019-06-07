@@ -29,9 +29,6 @@ $(document).ready(function() {
       for (let i=0; i < data.length; i++){
         $('.showDoctorsAilment').append(`<li>${data[i].profile.first_name} ${data[i].profile.last_name}<ul><li>${data[i].practices[0].visit_address.street} ${data[i].practices[0].visit_address.city} ${data[i].practices[0].visit_address.state}</li> <li>${data[i].practices[0].phones[0].number}</li> <li>Accepts New Patients? ${data[i].practices[0].accepts_new_patients}</li></li>`);
       }
-        // (body.data).forEach(doctor => {
-        //   $('.showDoctorsAilment').append(`<li>${doctor.profile.first_name} ${doctor.profile.last_name}</li>`);
-        // })
     }, function(error) {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
     });
@@ -45,10 +42,14 @@ $(document).ready(function() {
     promise.then(function(response) {
       let body = JSON.parse(response);
       console.log(body);
-      $('#headByName').html(`<h4>Here are some doctors with a name similar to "${input}"</h4>`);
+      if ((body.data).length > 0){
+        $('#headByName').html(`<h4>Here are some doctors with a name similar to "${input}"</h4>`);
         (body.data).forEach(doctor => {
           $('.showDoctorsName').append(`<li>${doctor.profile.first_name} ${doctor.profile.last_name}</li>`);
         })
+      } else {
+        $('#headByName').html(`<h4>Sorry, there are no doctors with a name similar to "${input}"</h4>`);
+      }
     }, function(error) {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
     });
