@@ -24,8 +24,9 @@ $(document).ready(function() {
     promise.then(function(response) {
       let body = JSON.parse(response);
       console.log(body);
+      $('#headAilment').html(`<h4>Here are some doctors that specialize in ${input}</h4>`);
         (body.data).forEach(doctor => {
-          $('.showDoctorsAilment').append(`<li>${doctor.profile.first_name} ${doctor.profile.last_name} ${doctor.profile.specialty_uid}</li>`);
+          $('.showDoctorsAilment').append(`<li>${doctor.profile.first_name} ${doctor.profile.last_name}</li>`);
         })
     }, function(error) {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
